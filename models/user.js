@@ -21,7 +21,6 @@ module.exports = function (sequelizeConnection, DataTypes) {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
             validate: {
                 isStrongPassword(password){
                     if(!(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(password)))

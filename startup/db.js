@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelizeConnection = new Sequelize('todolist_users', 'postgres', '0000', {
-    host: 'localhost', dialect: 'postgres'
+    host: 'localhost', dialect: 'postgres', logging: false
 });
 const UserActions = require('../models/user-actions')(sequelizeConnection, DataTypes);
 const User = require('../models/user')(sequelizeConnection, DataTypes);
@@ -14,10 +14,17 @@ UserHistory.belongsTo(User);
 UserActions.hasMany(UserHistory);
 UserHistory.belongsTo(UserActions);
 
+//inserting some seed values
+const userSeeds = require('../seed-queries/users');
+const userActionsSeeds = require('../seed-queries/user-actions');
+const userHistorySeeds = require('../seed-queries/user-history');
+// userSeeds.insertUser(User);
+// userActionsSeeds.insertUserActions(UserActions);
+userHistorySeeds.insertUserHistory(UserHistory);
 
 connect = () => {
     try {
-        sequelizeConnection.sync({ force: true });
+        sequelizeConnection.sync();
         console.log('connected to db');
     } catch (error) {
         console.log('something went wrong: ', error);
