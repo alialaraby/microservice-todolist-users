@@ -1,0 +1,9 @@
+{
+    "name": "todolist users service - dev",
+    "db_name": "todolist_users",
+    "db_username": "postgres",
+    "db_password": "0000",
+    "db_host": "localhost",
+    "db_dialect": "postgres",
+    "db_enable_logging": false
+}
