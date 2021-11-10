@@ -1,4 +1,5 @@
 //imports
+const error = require('./middlewares/error');
 const express = require('express');
 const app = express();
 
@@ -6,3 +7,4 @@ const app = express();
 require('./startup/db').connect();
 require('./startup/port')(app);
 require('./startup/routing')(app);
+app.use(error);
