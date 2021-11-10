@@ -7,6 +7,6 @@ exports.getUsersList = async (req, res, next) => {
         let users = await User.findAll({
             attributes: { exclude: ['updatedAt', 'createdAt'] }
         });
-        res.status(200).json({ users: users });
+        res.status(200).json({ data: users });
     } catch (error) { next(error); }
 }
